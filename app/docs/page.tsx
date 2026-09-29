@@ -699,6 +699,7 @@ export default function Page() {
   )
 }
 
+/* eslint-disable react/no-unescaped-entities */
 function NodeDetails({ node }: { node: NodeId }) {
   switch (node) {
     case "newData":
@@ -727,6 +728,7 @@ function NodeDetails({ node }: { node: NodeId }) {
       return <DetailContent><p>The <strong>Investigating Officer (IO)</strong> will have a similar CrimeGraph WebApp interface, but with a more restricted data scope.</p><p>By default, the IO can only access information related to the cases assigned to them.</p><p>This includes:</p><BulletList items={["Assigned case data", "Related entities", "Authorized documents and media", "Graph relationships within their permitted scope", "AI-generated insights based on their accessible data"]} /><p>If the Prediction Pipeline identifies a potential connection between the IO's assigned case and another case outside their access permissions, the system will <strong>not expose the restricted case's full information</strong>.</p><p>Instead, it can provide generic information indicating that a potentially relevant connection exists.</p><p>For example:</p><p className="font-medium">Assigned Case → Person X → Phone Y → Another Case</p><p>The IO may be informed that a potentially relevant connection to another case has been identified, without being shown the restricted case details.</p><p>The IO can then request access to that case.</p><p>Once the required legal/administrative permission is granted, the CrimeGraph WebApp will fetch the updated access information from the <strong>government ERP system</strong>, after which the IO can access the additional data permitted by that authorization.</p></DetailContent>
   }
 }
+/* eslint-enable react/no-unescaped-entities */
 
 function DetailContent({ children }: { children: React.ReactNode }) {
   return (

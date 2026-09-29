@@ -184,8 +184,12 @@ export function AIChat() {
   React.useEffect(() => {
     const isMobile = window.matchMedia("(max-width: 1023px)").matches
 
-    setShowChatSidebar(!isMobile)
-    setChatSidebarReady(true)
+    const frame = window.requestAnimationFrame(() => {
+      setShowChatSidebar(!isMobile)
+      setChatSidebarReady(true)
+    })
+
+    return () => window.cancelAnimationFrame(frame)
   }, [])
 
   function createNewChat() {
