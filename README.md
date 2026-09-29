@@ -20,6 +20,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 The main dashboard is available at [http://localhost:3000/dashboard](http://localhost:3000/dashboard).
 
+For the complete setup, production implementation, security, and deployment checklist, see the [Project Setup and Completion Guide](PROJECT_SETUP_AND_COMPLETION_GUIDE.md).
+
 ## Available Scripts
 
 ```bash
