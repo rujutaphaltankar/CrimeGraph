@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "entity": "Rohan Verma",
+    "type": "Person",
+    "directLinks": 12,
+    "indirectLinks": 28,
+    "caseId": 9834323
+  },
+  {
+    "id": 2,
+    "entity": "Meera Shah",
+    "type": "Person",
+    "directLinks": 8,
+    "indirectLinks": 17,
+    "caseId": 9834324
+  },
+  {
+    "id": 3,
+    "entity": "Apex Technologies",
+    "type": "Organization",
+    "directLinks": 21,
+    "indirectLinks": 46,
+    "caseId": 9834325
+  },
+  {
+    "id": 4,
+    "entity": "987654321",
+    "type": "Phone Number",
+    "directLinks": 5,
+    "indirectLinks": 13,
+    "caseId": 9834326
+  },
+  {
+    "id": 5,
+    "entity": "rohan.verma@example.com",
+    "type": "Email",
+    "directLinks": 9,
+    "indirectLinks": 22,
+    "caseId": 9834327
+  },
+  {
+    "id": 6,
+    "entity": "Pune, Maharashtra",
+    "type": "Location",
+    "directLinks": 14,
+    "indirectLinks": 31,
+    "caseId": 9834328
+  },
+  {
+    "id": 7,
+    "entity": "MH12AB1234",
+    "type": "Vehicle",
+    "directLinks": 4,
+    "indirectLinks": 11,
+    "caseId": 9834329
+  },
+  {
+    "id": 8,
+    "entity": "Orion Financial Services",
+    "type": "Organization",
+    "directLinks": 18,
+    "indirectLinks": 39,
+    "caseId": 9834330
+  },
+  {
+    "id": 9,
+    "entity": "Aarav Kulkarni",
+    "type": "Person",
+    "directLinks": 7,
+    "indirectLinks": 19,
+    "caseId": 9834331
+  },
+  {
+    "id": 10,
+    "entity": "192.168.10.24",
+    "type": "IP Address",
+    "directLinks": 3,
+    "indirectLinks": 9,
+    "caseId": 9834332
+  },
+  {
+    "id": 11,
+    "entity": "Nexus Holdings",
+    "type": "Organization",
+    "directLinks": 25,
+    "indirectLinks": 52,
+    "caseId": 9834333
+  },
+  {
+    "id": 12,
+    "entity": "Sneha Patil",
+    "type": "Person",
+    "directLinks": 11,
+    "indirectLinks": 24,
+    "caseId": 9834334
+  }
+]
