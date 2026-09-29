@@ -14,6 +14,15 @@ The repository currently contains a responsive Next.js dashboard with:
 
 The current app is a frontend demo. It does not yet persist changes to a database, authenticate users, upload documents, call an AI service, or expose a production API.
 
+The first backend foundation is now available:
+
+- `GET /api/health` reports service status and the current storage mode.
+- `GET /api/entities` lists entities and supports `search`, `type`, and `caseId` filters.
+- `POST /api/entities` validates and creates an entity.
+- Entity validation and storage are isolated in `lib/server/entities.ts`.
+
+The current repository uses process memory seeded from `app/dashboard/data.json`. This is suitable for local development only; data can be lost when the process restarts or a serverless instance changes. Replace this repository with PostgreSQL before using real data.
+
 ## 2. Prerequisites
 
 Install these tools before starting:
