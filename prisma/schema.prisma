@@ -1,0 +1,130 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  SHO
+  INVESTIGATOR
+  STATION_ADMIN
+  SYSTEM_ADMIN
+}
+
+model Station {
+  id        String   @id @default(cuid())
+  name      String
+  code      String   @unique
+  users     User[]
+  cases     Case[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model User {
+  id           String       @id @default(cuid())
+  name         String
+  email        String       @unique
+  passwordHash String
+  role         Role         @default(SHO)
+  stationId    String?
+  station      Station?     @relation(fields: [stationId], references: [id])
+  accounts     Account[]
+  sessions     Session[]
+  auditEvents  AuditEvent[]
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Case {
+  id           String       @id @default(cuid())
+  title        String
+  status       String       @default("open")
+  stationId    String
+  station      Station      @relation(fields: [stationId], references: [id])
+  entities     Entity[]
+  documents    Document[]
+  caseRequests CaseRequest[]
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+}
+
+model Entity {
+  id            String   @id @default(cuid())
+  name          String
+  type          String
+  directLinks   Int      @default(0)
+  indirectLinks Int      @default(0)
+  caseId        String
+  case          Case     @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  createdAt     DateTime @default(now())
+}
+
+model Document {
+  id         String   @id @default(cuid())
+  title      String
+  fileName   String
+  status     String   @default("uploaded")
+  storageUrl String?
+  caseId     String
+  case       Case     @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model CaseRequest {
+  id          String   @id @default(cuid())
+  title       String
+  status      String   @default("pending")
+  description String?
+  caseId      String?
+  case        Case?    @relation(fields: [caseId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model AuditEvent {
+  id        String   @id @default(cuid())
+  action    String
+  details   String?
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+}
